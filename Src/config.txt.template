@@ -1,0 +1,7 @@
+wifi_ssid
+wifi_passwd
+server_name
+client_name
+/ESP/Wemos/Water/Cold
+/ESP/Wemos/Water/Hot
+/ESP/Wemos/Water/Debug
