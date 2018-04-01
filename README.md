@@ -10,20 +10,20 @@ This github space contains firmware for the device. Additionally you may refer t
 
 ## Building the firmware
 
-The firmware is written in [micropython](https://github.com/micropython/micropython). Since ESP8266 module has a very limited amount of RAM some trick are required to reduct RAM consumption.
-* Some classes have to be pre-compiled so that ESP8266 executes bytecode (not spending RAM for compilation)
-* Library classes have to be burned into the firmware so that so that ESP8266 executes bytecode right from flash (refer to 'frozen bytecode' in micropython documentation)
+The firmware is written in [micropython](https://github.com/micropython/micropython). Since ESP8266 module has a very limited amount of RAM some trick are required to reduce RAM consumption.
+* Some classes have to be pre-compiled so that ESP8266 does not require to compile them (executes bytecode)
+* Library classes have to be burned into the firmware so that so that ESP8266 executes bytecode directly from the flash (refer to 'frozen bytecode' in micropython documentation)
 
-So the building algorithm will be as follows:
+So the here is the building algorithm:
 * Build the micropython firmware
   * Download and build [ESP Open SDK](https://github.com/pfalcon/esp-open-sdk)
   * Download [Micropython sources](https://github.com/micropython/micropython)
-  * Put 'Libraries' directory contents into Micropython's [ports/esp8266/modules directory](https://github.com/micropython/micropython/tree/master/ports/esp8266/modules)
-  * Build Micropython accoring to [ESP8266 port instructions](https://github.com/micropython/micropython/tree/master/ports/esp8266)
+  * Put 'Libraries' directory contents into Micropython's [ports/esp8266/modules](https://github.com/micropython/micropython/tree/master/ports/esp8266/modules) directory
+  * Build Micropython accoring to [Micropython ESP8266 port instructions](https://github.com/micropython/micropython/tree/master/ports/esp8266)
   * Flash built firmware into ESP8266 module (e.g. with esptool.py)
 * Upload files in 'Src' directory to module internal filesystem
   * Rename config.txt.template to config.txt and fill your configuration parameters inside
-  * Pre-compile all .py files with mpy-cross (except for main.py)
+  * Pre-compile all .py files in 'Src' directory with mpy-cross (except for main.py)
   * Upload config.txt, all .mpy files and main.py to the device (e.g. with ampy.py)
 
 ## Credits
