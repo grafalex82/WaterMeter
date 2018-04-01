@@ -16,15 +16,15 @@ The firmware is written in [micropython](https://github.com/micropython/micropyt
 
 So the building algorithm will be as follows:
 * Build the micropython firmware
-** Download and build [ESP Open SDK](https://github.com/pfalcon/esp-open-sdk)
-** Download [Micropython sources](https://github.com/micropython/micropython)
-** Put 'Libraries' directory contents into Micropython's [ports/esp8266/modules directory](https://github.com/micropython/micropython/tree/master/ports/esp8266/modules)
-** Build Micropython accoring to [ESP8266 port instructions](https://github.com/micropython/micropython/tree/master/ports/esp8266)
-** Flash built firmware into ESP8266 module (e.g. with esptool.py)
+  * Download and build [ESP Open SDK](https://github.com/pfalcon/esp-open-sdk)
+  * Download [Micropython sources](https://github.com/micropython/micropython)
+  * Put 'Libraries' directory contents into Micropython's [ports/esp8266/modules directory](https://github.com/micropython/micropython/tree/master/ports/esp8266/modules)
+  * Build Micropython accoring to [ESP8266 port instructions](https://github.com/micropython/micropython/tree/master/ports/esp8266)
+  * Flash built firmware into ESP8266 module (e.g. with esptool.py)
 * Upload files in 'Src' directory to module internal filesystem
-** Rename config.txt.template to config.txt and fill your configuration parameters inside
-** Pre-compile all .py files with mpy-cross (except for main.py)
-** Upload config.txt, all .mpy files and main.py to the device (e.g. with ampy.py)
+  * Rename config.txt.template to config.txt and fill your configuration parameters inside
+  * Pre-compile all .py files with mpy-cross (except for main.py)
+  * Upload config.txt, all .mpy files and main.py to the device (e.g. with ampy.py)
 
 ## Credits
 
