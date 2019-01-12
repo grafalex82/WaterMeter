@@ -11,7 +11,7 @@ class EEPROM():
 
     def read(self, eeprom_addr):
         try:
-            self.i2c.readfrom_mem_into(self.i2c_addr, eeprom_addr, self.i2c_buf, addrsize=16)
+            self.i2c.readfrom_mem_into(self.i2c_addr, eeprom_addr, self.i2c_buf, addrsize=8)
         except OSError:
             return 0
         return ustruct.unpack_from("<I", self.i2c_buf)[0]    
@@ -20,7 +20,7 @@ class EEPROM():
     def write(self, eeprom_addr, value):
         ustruct.pack_into("<I", self.i2c_buf, 0, value)
         try:
-            self.i2c.writeto_mem(self.i2c_addr, eeprom_addr, self.i2c_buf, addrsize=16)
+            self.i2c.writeto_mem(self.i2c_addr, eeprom_addr, self.i2c_buf, addrsize=8)
         except OSError:
             pass
 
